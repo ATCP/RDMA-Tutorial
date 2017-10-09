@@ -8,6 +8,8 @@
 #include "setup_ib.h"
 #include "config.h"
 #include "server.h"
+#include "shmalloc.h"
+
 
 void *server_thread (void *arg)
 {
@@ -41,10 +43,16 @@ void *server_thread (void *arg)
     ret  = pthread_setaffinity_np (self, sizeof(cpu_set_t), &cpuset);
     check (ret == 0, "thread[%ld]: failed to set thread affinity", thread_id);
 
-    /* pre-post recvs */
-    wc = (struct ibv_wc *) calloc (num_wc, sizeof(struct ibv_wc));
-    check (wc != NULL, "thread[%ld]: failed to allocate wc", thread_id);
+    /* pre-poset recvs */
+    //wc = (struct ibv_wc *) calloc (num_wc, sizeof(struct ibv_wc));
+    //check (ret == 0, "thread[%ld]: failed to set thread affinity", thread_id);
 
+    size_t dl_size = num_wc * sizeof(struct ibv_wc);  
+    wc = (struct ibv_wc *) shmalloc(10, &dl_size, shm, SHMSZ);
+    shmfree(wc, SHMSZ, shm);
+
+    check (wc != NULL, "thread[%ld]: failed to allocate wc", thread_id);
+    
     for (i = 0; i < num_concurr_msgs; i++) {
         ret = post_recv (msg_size, lkey, (uint64_t)buf_ptr, qp, buf_ptr);
         check (ret == 0, "thread[%ld]: failed to post recv", thread_id);
@@ -130,6 +138,9 @@ void *server_thread (void *arg)
     }
 
     /* dump statistics */
+
+    fprintf(stderr, "dump statistics\n");
+
     duration   = (double)((end.tv_sec - start.tv_sec) * 1000000 +
                           (end.tv_usec - start.tv_usec));
     throughput = (double)(ops_count) / duration;

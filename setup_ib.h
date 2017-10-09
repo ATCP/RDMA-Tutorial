@@ -3,6 +3,13 @@
 
 #include <infiniband/verbs.h>
 
+#define SHMSZ 4096
+
+int shmid;
+char *shm;
+char *sbuf;
+char *vbuf;
+
 struct IBRes {
     struct ibv_context		*ctx;
     struct ibv_pd		*pd;

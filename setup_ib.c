@@ -7,6 +7,8 @@
 #include "debug.h"
 #include "config.h"
 #include "setup_ib.h"
+#include "shmalloc.h"
+
 
 struct IBRes ib_res;
 
@@ -147,8 +149,16 @@ int setup_ib ()
     check(ret == 0, "Failed to query IB port information.");
     
     /* register mr */
-    ib_res.ib_buf_size = config_info.msg_size * config_info.num_concurr_msgs;
-    ib_res.ib_buf      = (char *) memalign (4096, ib_res.ib_buf_size);
+    //ib_res.ib_buf_size = config_info.msg_size * config_info.num_concurr_msgs;
+    //ib_res.ib_buf      = (char *) memalign (4096, ib_res.ib_buf_size);
+    //check (ib_res.ib_buf != NULL, "Failed to allocate ib_buf");
+    
+    ib_res.ib_buf_size   = config_info.msg_size * config_info.num_concurr_msgs;
+    
+    //ib_res.ib_buf      = (char *) memalign (4096, ib_res.ib_buf_size);
+    
+    ib_res.ib_buf  = (char *)shmalloc(2, &ib_res.ib_buf_size, shm, SHMSZ);
+    shmfree(ib_res.ib_buf, SHMSZ, shm); 
     check (ib_res.ib_buf != NULL, "Failed to allocate ib_buf");
 
     ib_res.mr = ibv_reg_mr (ib_res.pd, (void *)ib_res.ib_buf,
@@ -192,6 +202,10 @@ int setup_ib ()
     check (ret == 0, "Failed to connect qp");
 
     ibv_free_device_list (dev_list);
+
+    if (config_info.is_server) {	
+    }
+    
     return 0;
 
  error:
