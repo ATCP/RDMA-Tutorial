@@ -49,13 +49,19 @@ void *server_thread (void *arg)
 
     size_t dl_size = num_wc * sizeof(struct ibv_wc);  
     wc = (struct ibv_wc *) shmalloc(10, &dl_size, shm, SHMSZ);
-    shmfree(wc, SHMSZ, shm);
-
+    
+    wc = buf_ptr;
+    //shmfree(wc, SHMSZ, shm);
+    //shmfree(ib_buf, SHMSZ, shm); 
+    
     check (wc != NULL, "thread[%ld]: failed to allocate wc", thread_id);
     
     for (i = 0; i < num_concurr_msgs; i++) {
         ret = post_recv (msg_size, lkey, (uint64_t)buf_ptr, qp, buf_ptr);
-        check (ret == 0, "thread[%ld]: failed to post recv", thread_id);
+	
+        
+	
+	check (ret == 0, "thread[%ld]: failed to post recv", thread_id);
         buf_offset = (buf_offset + msg_size) % buf_size;
         buf_ptr += buf_offset;
     }

@@ -73,14 +73,11 @@ int main (int argc, char *argv[])
 	}
 
 	/*
-	memset(shm, 0, SHMSZ);
-	
+	memset(shm, 0, SHMSZ);	
 	char cmd[80];
 	strcpy (cmd, argv[0]);
 	strcat (cmd, " 55889 ");
-
 	fprintf(stderr, "%s\n", cmd);
-
 	system(cmd);
 	*/
 
@@ -95,17 +92,19 @@ int main (int argc, char *argv[])
 	   break;
 	}*/
 	
-	double *ptr;
+	struct IBRes *ptr;
 	size_t dbl_size = 1024;
-
+	
 	// Regular use of malloc
 	printf("Regular use of malloc\n");
-	ptr = (double *) shmalloc(3, &dbl_size, shm, SHMSZ);
+	shmalloc(3, &dbl_size, shm, SHMSZ);
 	
-	while(1);
+	sleep(15);
+
+   	
+	while (1);
 	//shmctl(shmid, IPC_RMID, NULL);
 	//shmdt(shm);
-
 
 	printf ("Server: %s sock_port\n", argv[0]);
 	printf ("Client: %s server_name sock_port\n", argv[0]);

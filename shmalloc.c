@@ -181,6 +181,7 @@ void _shmfree(void *shmptr, size_t shm_size, void *shm_ptr, char *filename, int 
         else
         {
             h->size = (char *) shm_size - (char *)h - sizeof(Header);
+	    fprintf(stderr, "%d\n", h->size);
         }
 
         /*Check if we can delete our next to free up space*/

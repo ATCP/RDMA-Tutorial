@@ -1,0 +1,124 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BITSEQ	shmalloc.h	6;"	d
+CC	Makefile	/^CC=gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS=-ggdb -Wall -O2$/;"	m
+CFLAGS	Makefile	/^debug: CFLAGS=-Wall -Werror -g -DDEBUG$/;"	m
+CLIENT_H_	client.h	2;"	d
+CONFIG_H_	config.h	2;"	d
+ConfigInfo	config.h	/^struct ConfigInfo {$/;"	s
+DEBUG_H_	debug.h	6;"	d
+Header	shmalloc.h	/^struct Header {$/;"	s
+Header	shmalloc.h	/^typedef struct Header Header;$/;"	t	typeref:struct:Header
+IBRes	setup_ib.h	/^struct IBRes {$/;"	s
+IB_H_	ib.h	2;"	d
+IB_MTU	ib.h	11;"	d
+IB_PORT	ib.h	12;"	d
+IB_SL	ib.h	13;"	d
+IB_WR_ID_STOP	ib.h	14;"	d
+INCLUDES	Makefile	/^INCLUDES=$/;"	m
+LDFLAGS	Makefile	/^LDFLAGS=$/;"	m
+LIBS	Makefile	/^LIBS=-pthread -lrdmacm -libverbs$/;"	m
+LOG_HEADER	debug.h	12;"	d
+LOG_SUB_HEADER	debug.h	13;"	d
+MSG_CTL_START	ib.h	/^    MSG_CTL_START = 0,$/;"	e	enum:MsgType
+MSG_CTL_STOP	ib.h	/^    MSG_CTL_STOP,$/;"	e	enum:MsgType
+MSG_REGULAR	ib.h	/^    MSG_REGULAR,$/;"	e	enum:MsgType
+MsgType	ib.h	/^enum MsgType {$/;"	g
+NUM_WARMING_UP_OPS	ib.h	15;"	d
+OBJS	Makefile	/^OBJS=$(SRCS:.c=.o)$/;"	m
+PROG	Makefile	/^PROG=rdma-tutorial$/;"	m
+QPInfo	ib.h	/^struct QPInfo {$/;"	s
+SERVER_H_	server.h	2;"	d
+SETUP_IB_H_	setup_ib.h	2;"	d
+SHMALLOC_H	shmalloc.h	2;"	d
+SHMSZ	setup_ib.h	6;"	d
+SOCK_H_	sock.h	2;"	d
+SOCK_SYNC_MSG	sock.h	8;"	d
+SRCS	Makefile	/^SRCS=main.c client.c config.c ib.c server.c setup_ib.c sock.c shmalloc.c$/;"	m
+TOT_NUM_OPS	ib.h	16;"	d
+_GNU_SOURCE	client.c	1;"	d	file:
+_GNU_SOURCE	server.c	1;"	d	file:
+_GNU_SOURCE	sock.c	1;"	d	file:
+_shmalloc	shmalloc.c	/^void *_shmalloc(int id, size_t *size, void *shmptr, size_t shm_size,$/;"	f
+_shmfree	shmalloc.c	/^void _shmfree(void *shmptr, size_t shm_size, void *shm_ptr, char *filename, int linenumber)$/;"	f
+attr	shmalloc.h	/^    pthread_mutexattr_t attr;$/;"	m	struct:Header
+bitseq	shmalloc.h	/^    int bitseq;$/;"	m	struct:Header
+check	debug.h	31;"	d
+clean_errno	debug.h	17;"	d
+client_thread_func	client.c	/^void *client_thread_func (void *arg)$/;"	f
+close_ib_connection	setup_ib.c	/^void close_ib_connection ()$/;"	f
+config_info	config.c	/^struct ConfigInfo config_info;$/;"	v	typeref:struct:ConfigInfo
+connect_qp_client	setup_ib.c	/^int connect_qp_client ()$/;"	f
+connect_qp_server	setup_ib.c	/^int connect_qp_server ()$/;"	f
+cq	setup_ib.h	/^    struct ibv_cq		*cq;$/;"	m	struct:IBRes	typeref:struct:IBRes::ibv_cq
+ctx	setup_ib.h	/^    struct ibv_context		*ctx;$/;"	m	struct:IBRes	typeref:struct:IBRes::ibv_context
+debug	debug.h	36;"	d
+debug	debug.h	39;"	d
+debug_detail	debug.h	34;"	d
+destroy_env	main.c	/^void destroy_env ()$/;"	f
+destroy_header	shmalloc.c	/^void destroy_header(Header *h, void *shm_ptr)$/;"	f
+dev_attr	setup_ib.h	/^    struct ibv_device_attr	 dev_attr;$/;"	m	struct:IBRes	typeref:struct:IBRes::ibv_device_attr
+has_mutex	shmalloc.h	/^    unsigned char has_mutex;$/;"	m	struct:Header
+htonll	ib.h	/^static inline uint64_t htonll (uint64_t x) {return bswap_64(x); }$/;"	f
+htonll	ib.h	/^static inline uint64_t htonll (uint64_t x) {return x; }$/;"	f
+ib_buf	setup_ib.h	/^    char   *ib_buf;$/;"	m	struct:IBRes
+ib_buf_size	setup_ib.h	/^    size_t  ib_buf_size;$/;"	m	struct:IBRes
+ib_res	setup_ib.c	/^struct IBRes ib_res;$/;"	v	typeref:struct:IBRes
+id	shmalloc.h	/^    int id;$/;"	m	struct:Header
+init_env	main.c	/^int init_env ()$/;"	f
+initialize_header	shmalloc.c	/^void initialize_header(Header *h, size_t size, int id, unsigned char is_first)$/;"	f
+is_free	shmalloc.h	/^    unsigned char is_free;$/;"	m	struct:Header
+is_server	config.h	/^    bool is_server;          \/* if the current node is server *\/$/;"	m	struct:ConfigInfo
+lid	ib.h	/^    uint16_t lid;$/;"	m	struct:QPInfo
+log	debug.h	37;"	d
+log	debug.h	40;"	d
+log_err	debug.h	19;"	d
+log_file	debug.h	27;"	d
+log_fp	main.c	/^FILE	*log_fp	     = NULL;$/;"	v
+log_info	debug.h	25;"	d
+log_warn	debug.h	22;"	d
+main	main.c	/^int main (int argc, char *argv[])$/;"	f
+modify_qp_to_rts	ib.c	/^int modify_qp_to_rts (struct ibv_qp *qp, uint32_t target_qp_num, uint16_t target_lid)$/;"	f
+mr	setup_ib.h	/^    struct ibv_mr		*mr;$/;"	m	struct:IBRes	typeref:struct:IBRes::ibv_mr
+msg_size	config.h	/^    int  msg_size;           \/* the size of each echo message *\/$/;"	m	struct:ConfigInfo
+mutex	shmalloc.h	/^    pthread_mutex_t mutex;$/;"	m	struct:Header
+next	shmalloc.h	/^    long prev, next; \/\/ offsets$/;"	m	struct:Header
+ntohll	ib.h	/^static inline uint64_t ntohll (uint64_t x) {return bswap_64(x); }$/;"	f
+ntohll	ib.h	/^static inline uint64_t ntohll (uint64_t x) {return x; }$/;"	f
+num_concurr_msgs	config.h	/^    int  num_concurr_msgs;   \/* the number of messages can be sent concurrently *\/$/;"	m	struct:ConfigInfo
+offset2ptr	shmalloc.c	/^void *offset2ptr(long offset, void *shm_ptr)$/;"	f
+pd	setup_ib.h	/^    struct ibv_pd		*pd;$/;"	m	struct:IBRes	typeref:struct:IBRes::ibv_pd
+port_attr	setup_ib.h	/^    struct ibv_port_attr	 port_attr;$/;"	m	struct:IBRes	typeref:struct:IBRes::ibv_port_attr
+post_recv	ib.c	/^int post_recv (uint32_t req_size, uint32_t lkey, uint64_t wr_id, $/;"	f
+post_send	ib.c	/^int post_send (uint32_t req_size, uint32_t lkey, uint64_t wr_id,$/;"	f
+prev	shmalloc.h	/^    long prev, next; \/\/ offsets$/;"	m	struct:Header
+print_config_info	config.c	/^void print_config_info ()$/;"	f
+ptr2offset	shmalloc.c	/^long ptr2offset(void *ptr, void *shm_ptr)$/;"	f
+qp	setup_ib.h	/^    struct ibv_qp		*qp;$/;"	m	struct:IBRes	typeref:struct:IBRes::ibv_qp
+qp_num	ib.h	/^    uint32_t qp_num;$/;"	m	struct:QPInfo
+refcount	shmalloc.h	/^    int refcount;$/;"	m	struct:Header
+run_client	client.c	/^int run_client ()$/;"	f
+run_server	server.c	/^int run_server ()$/;"	f
+sbuf	setup_ib.h	/^char *sbuf;$/;"	v
+sentinel	debug.h	29;"	d
+server_name	config.h	/^    char *server_name;       \/* server name *\/$/;"	m	struct:ConfigInfo
+server_thread	server.c	/^void *server_thread (void *arg)$/;"	f
+setup_ib	setup_ib.c	/^int setup_ib ()$/;"	f
+shm	setup_ib.h	/^char *shm;$/;"	v
+shmalloc	shmalloc.h	7;"	d
+shmfree	shmalloc.h	8;"	d
+shmid	setup_ib.h	/^int shmid;$/;"	v
+size	shmalloc.h	/^    size_t size;$/;"	m	struct:Header
+sock_create_bind	sock.c	/^int sock_create_bind (char *port)$/;"	f
+sock_create_connect	sock.c	/^int sock_create_connect (char *server_name, char *port)$/;"	f
+sock_get_qp_info	sock.c	/^int sock_get_qp_info(int sock_fd, struct QPInfo *qp_info)$/;"	f
+sock_port	config.h	/^    char *sock_port;         \/* socket port number *\/$/;"	m	struct:ConfigInfo
+sock_read	sock.c	/^ssize_t sock_read (int sock_fd, void *buffer, size_t len)$/;"	f
+sock_set_qp_info	sock.c	/^int sock_set_qp_info(int sock_fd, struct QPInfo *qp_info)$/;"	f
+sock_write	sock.c	/^ssize_t sock_write (int sock_fd, void *buffer, size_t len)$/;"	f
+vbuf	setup_ib.h	/^char *vbuf;$/;"	v

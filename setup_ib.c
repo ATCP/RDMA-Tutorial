@@ -156,18 +156,22 @@ int setup_ib ()
     ib_res.ib_buf_size   = config_info.msg_size * config_info.num_concurr_msgs;
     
     //ib_res.ib_buf      = (char *) memalign (4096, ib_res.ib_buf_size);
-    
-    ib_res.ib_buf  = (char *)shmalloc(2, &ib_res.ib_buf_size, shm, SHMSZ);
-    shmfree(ib_res.ib_buf, SHMSZ, shm); 
+    ib_buf 	         = ib_res.ib_buf = (char *)shmalloc(2, &ib_res.ib_buf_size, shm, SHMSZ);
+   
     check (ib_res.ib_buf != NULL, "Failed to allocate ib_buf");
-
+    
     ib_res.mr = ibv_reg_mr (ib_res.pd, (void *)ib_res.ib_buf,
 			    ib_res.ib_buf_size,
 			    IBV_ACCESS_LOCAL_WRITE |
 			    IBV_ACCESS_REMOTE_READ |
 			    IBV_ACCESS_REMOTE_WRITE);
+
+			    fprintf(stderr, "mr key: %x\n", ib_res.mr->lkey);
     check (ib_res.mr != NULL, "Failed to register mr");
     
+    //shmfree(ib_buf, SHMSZ, shm); 
+    
+
     /* query IB device attr */
     ret = ibv_query_device(ib_res.ctx, &ib_res.dev_attr);
     check(ret==0, "Failed to query device");

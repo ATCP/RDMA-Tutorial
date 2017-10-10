@@ -4,17 +4,11 @@
 
 ************ Configuraion ************
 
-is_server                 = true
+is_server                 = false
 msg_size                  = 64
 num_concurr_msgs          = 1
 sock_port                 = 55889
+server_name               = 192.168.0.1
 
 ************ End of Configuraion ************
-
-
-************ Start of IB Config ************
-
-	qp[1303] <-> qp[876]
-
-************ End of IB Config ************
 

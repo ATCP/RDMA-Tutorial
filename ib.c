@@ -93,7 +93,7 @@ int post_send (uint32_t req_size, uint32_t lkey, uint64_t wr_id,
 	.send_flags = IBV_SEND_SIGNALED,
 	.imm_data   = htonl (imm_data)
     };
-
+	fprintf(stderr, "%lx %lx\n", list.addr, list.lkey);
     ret = ibv_post_send (qp, &send_wr, &bad_send_wr);
     return ret;
 }
@@ -109,6 +109,9 @@ int post_recv (uint32_t req_size, uint32_t lkey, uint64_t wr_id,
 	.length = req_size,
 	.lkey   = lkey
     };
+
+
+	fprintf(stderr, "recv %lx %lx\n", list.addr, list.lkey);
 
     struct ibv_recv_wr recv_wr = {
 	.wr_id   = wr_id,

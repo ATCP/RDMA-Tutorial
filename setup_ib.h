@@ -7,8 +7,8 @@
 
 int shmid;
 char *shm;
-char *sbuf;
-char *vbuf;
+char *ib_buf;
+char *wc_buf;
 
 struct IBRes {
     struct ibv_context		*ctx;
